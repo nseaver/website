@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vitae — Nick Seaver</title>
+<link rel="preload" href="/fonts/EBGaramond-Roman.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/EBGaramond-Italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/Barlow-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/Barlow-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<main class="page">
+
+  <div class="page-header">
+    <div class="page-header-spacer"></div>
+    <div>
+      <h1 class="page-title"><a href="/">Nick Sea<span class="kern-av">v</span>er</a></h1>
+      <p class="page-subtitle">Anthropologist, Tufts&nbsp;University</p>
+    </div>
+  </div>
+
+  <div class="page-row">
+    <div class="margin">
+      <nav>
+        <a class="nav-item" href="/writing/" data-text="Writing">Writing</a>
+        <a class="nav-item" href="/talking/" data-text="Talking">Talking</a>
+        <a class="nav-item" href="/teaching/" data-text="Teaching">Teaching</a>
+        <span class="nav-vitae active" data-text="Vitae">Vitae</span>
+      </nav>
+    </div>
+    <div class="text-block">
+
+      <div class="bio-section active" data-bio="medium">
+        <p>Nick Seaver is Associate Professor of Anthropology at Tufts University, where he also directs the program in Science, Technology &amp; Society. His research examines the relationship between cultural concepts and technological practices, particularly in computational settings. He is co-editor of <em>Towards an Anthropology of Data</em> (2021) and the author of <em>Computing Taste: Algorithms and the Makers of Music Recommendation</em> (2022), an ethnographic study of music recommender system developers. He is currently writing a book on the meaning and measurement of attention and developing a project on the anthropology of contraptions. <span class="bio-inline-switcher">(<em>90 words; <a data-bio="short">shorter</a>, <a data-bio="long">longer</a></em>)</span></p>
+      </div>
+
+      <div class="bio-section" data-bio="short">
+        <p>Nick Seaver is Associate Professor of Anthropology at Tufts University, where he also directs the program in Science, Technology &amp; Society. He is the author of <em>Computing Taste: Algorithms and the Makers of Music Recommendation</em> (2022) and is currently writing a book on the meaning and measurement of attention. <span class="bio-inline-switcher">(<em>49 words; <a data-bio="medium">longer</a>, <a data-bio="long">longest</a></em>)</span></p>
+      </div>
+
+      <div class="bio-section" data-bio="long">
+        <p>Nick Seaver is Associate Professor of Anthropology at Tufts University, where he also directs the program in Science, Technology &amp; Society. He is co-editor of <em>Towards an Anthropology of Data</em> (2021) and the author of <em>Computing Taste: Algorithms and the Makers of Music Recommendation</em> (2022), an ethnographic study of how music recommender system developers think about music, listeners, and listening. Seaver’s work brings anthropological methods and theory to bear on objects like taste, attention, and complexity, arguing that they are at once cultural and technical. He is a faculty affiliate with Harvard’s Berkman Klein Center for Internet &amp; Society and a fellow with the Canadian Institute for Advanced Research’s Future Flourishing Program. Currently, he is writing <em>Attention Fragments</em>, a fragmentary ethnography on the meaning and measurement of attention, under contract with the University of Chicago Press, and developing a new project on the anthropology of contraptions. <span class="bio-inline-switcher">(<em>146 words; <a data-bio="short">shortest</a>, <a data-bio="medium">shorter</a></em>)</span></p>
+      </div>
+
+      <p class="downloads"><a href="/files/seaver-headshot.jpg">Headshot</a>  <a href="/files/seaver-CV.pdf">CV</a></p>
+    </div>
+  </div>
+
+</main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('a[data-bio]').forEach(function(el) {
+    el.addEventListener('click', function(e) {
+      e.preventDefault();
+      var bio = this.dataset.bio;
+      document.querySelectorAll('.bio-section').forEach(function(s) {
+        s.classList.toggle('active', s.dataset.bio === bio);
+      });
+    });
+  });
+});
+</script>
+<script src="/nav.js"></script></body>
+</html>

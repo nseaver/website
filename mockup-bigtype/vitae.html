@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vitae — nickseaver.net</title>
+<link rel="preload" href="../fonts/EBGaramond-Roman.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/EBGaramond-Italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="mockup.css">
+<style>
+  .bigtype-page {
+    font-size: 50vw;
+    font-style: italic;
+    bottom: -10vw;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+</style>
+</head>
+<body>
+
+<div class="bigtype bigtype-page">Vitae</div>
+
+<div class="surface">
+  <nav>
+    <a class="nav-home" href="home.html">Nick Seaver</a>
+    <a class="nav-item" href="writing.html">Writing</a>
+    <a class="nav-item" href="talking.html">Talking</a>
+    <a class="nav-item" href="teaching.html">Teaching</a>
+    <a class="nav-vitae" href="vitae.html">Vitae</a>
+  </nav>
+
+  <div class="content">
+    <div class="text-block">
+
+      <div class="bio-section active" data-bio="medium">
+        <p>Nick Seaver is Associate Professor of Anthropology at Tufts University, where he also directs the program in Science, Technology &amp; Society. His research has appeared in venues including <em>Cultural Anthropology</em>, <em>Cultural Studies</em>, <em>Big Data &amp; Society</em>, and the <em>Journal of the Royal Anthropological Institute</em>. He is the author of <em>Computing Taste: Algorithms and the Makers of Music Recommendation</em> (2022), an ethnographic study of music recommender system developers. His current research examines the rise of attention as a value and virtue in machine learning worlds. <span class="bio-inline-switcher">(<em>82 words; <a data-bio="short">shorter</a>, <a data-bio="long">longer</a></em>)</span></p>
+      </div>
+
+      <div class="bio-section" data-bio="short">
+        <p>Nick Seaver is Associate Professor of Anthropology at Tufts University, where he also directs the program in Science, Technology &amp; Society. He is the author of <em>Computing Taste: Algorithms and the Makers of Music Recommendation</em> (2022). <span class="bio-inline-switcher">(<em>38 words; <a data-bio="medium">longer</a>, <a data-bio="long">longest</a></em>)</span></p>
+      </div>
+
+      <div class="bio-section" data-bio="long">
+        <p>Nick Seaver is Associate Professor of Anthropology at Tufts University, where he also directs the program in Science, Technology &amp; Society. His research examines the cultural theorizing of technical experts, particularly in fields related to machine learning, and has appeared in venues including <em>Cultural Anthropology</em>, <em>Cultural Studies</em>, <em>Big Data &amp; Society</em>, and the <em>Journal of the Royal Anthropological Institute</em>. He is the author of <em>Computing Taste: Algorithms and the Makers of Music Recommendation</em> (2022), an ethnographic study of music recommender system developers. He co-edited <em>Towards an Anthropology of Data</em> (2021) and was formerly co-chair of the Committee for the Anthropology of Science, Technology, and Computing. His current research examines the rise of attention as a value and virtue in machine learning worlds. <span class="bio-inline-switcher">(<em>112 words; <a data-bio="short">shortest</a>, <a data-bio="medium">shorter</a></em>)</span></p>
+      </div>
+
+      <p class="downloads-quiet"><a href="https://www.dropbox.com/scl/fi/kawvzi6tplj8gzp2tyqch/seaver-headshot2-sq.jpg?rlkey=lpytpk7emp1z9ew78kd7b0a96&dl=0">Headshot</a> · <a href="https://www.dropbox.com/scl/fi/co6t9bcp5q7dw7yx8grwq/seaver-CV.pdf?rlkey=fmwf8cnakjcw17lalfqc9f587&st=g0zcnz50&dl=0">CV</a></p>
+    </div>
+  </div>
+
+  <div class="page-end">&#10086;</div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('a[data-bio]').forEach(function(el) {
+    el.addEventListener('click', function(e) {
+      e.preventDefault();
+      var bio = this.dataset.bio;
+      document.querySelectorAll('.bio-section').forEach(function(s) {
+        s.classList.toggle('active', s.dataset.bio === bio);
+      });
+    });
+  });
+});
+</script>
+
+</body>
+</html>

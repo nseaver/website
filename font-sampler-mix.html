@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Font Mix — Gentium + EB Garamond title</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400;1,700&family=EB+Garamond:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #8fafbc;
+  --text: rgba(0, 0, 0, 0.85);
+  --text-secondary: rgba(0, 0, 0, 0.75);
+  --nav-width: 9rem;
+  --nav-gap: 3.5rem;
+  --content-width: 34rem;
+  --page-pad: 3.5rem;
+  --border-width: 1.2rem;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { background: white; }
+
+body {
+  background: var(--bg);
+  margin: var(--border-width);
+  padding: var(--page-pad);
+  color: var(--text);
+  font-family: 'Gentium Book Plus', serif;
+  font-size: 100%;
+  -webkit-font-smoothing: antialiased;
+  font-kerning: auto;
+  font-variant-ligatures: common-ligatures;
+  text-rendering: optimizeLegibility;
+}
+
+.site-header {
+  margin-left: calc(var(--nav-width) + var(--nav-gap));
+  margin-bottom: 3rem;
+  max-width: var(--content-width);
+}
+
+.site-header h1 {
+  font-family: 'EB Garamond', serif;
+  font-size: 4.8rem;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.1em;
+}
+
+.site-header .subtitle {
+  font-size: 1.55rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  line-height: 1.3;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: var(--nav-width) var(--content-width);
+  gap: var(--nav-gap);
+}
+
+nav {
+  text-align: right;
+  padding-top: 0.2rem;
+}
+
+nav .nav-item {
+  display: block;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text);
+  margin-bottom: 0.8em;
+}
+
+nav .nav-vitae {
+  display: block;
+  text-transform: none;
+  font-style: italic;
+  letter-spacing: 0;
+  font-size: 1.15rem;
+  color: var(--text);
+  margin-top: 1.5em;
+}
+
+.page-intro {
+  font-size: 1.55rem;
+  line-height: 1.28;
+  margin-bottom: 0;
+}
+
+.ornament {
+  text-align: center;
+  margin: 1.2rem 0;
+  font-size: 1.2rem;
+  color: var(--text);
+}
+
+.page-body {
+  font-size: 1.3rem;
+  line-height: 1.3;
+}
+
+.page-body p { margin: 0; }
+
+.page-body p + p {
+  text-indent: 2em;
+}
+</style>
+</head>
+<body>
+
+<div class="site-header">
+  <h1>Nick Seaver</h1>
+  <div class="subtitle">Anthropologist, Tufts University</div>
+</div>
+
+<div class="layout">
+  <nav>
+    <span class="nav-item">Writing</span>
+    <span class="nav-item">Talking</span>
+    <span class="nav-item">Teaching</span>
+    <span class="nav-vitae">Vitae</span>
+  </nav>
+
+  <div class="content">
+    <div class="page-intro">I study how people use technology to make sense of cultural things. I teach in the Department of Anthropology at Tufts University, where I also direct the program in Science, Technology, and Society.</div>
+    <div class="ornament">&darr;</div>
+    <div class="page-body">
+      <p>My first book is about the people who make music recommender systems and how they think about music, listening, and listeners. It&rsquo;s called <em>Computing Taste</em>, and it was published by the University of Chicago Press in 2022.</p>
+      <p>I&rsquo;m working on a new book about the many meanings of attention today, from neural networks to the new tech humanism. Its working title is <em>Attention Fragments</em>, and it&rsquo;s under contract with the University of Chicago Press.</p>
+      <p>I&rsquo;ve got a handful of pieces making their way through the publication pipeline on various topics: ideologies of attention in ethnographic fieldwork, the media theory of mouse jigglers, and how people use clues to identify AI-generated writing.</p>
+      <p>For the 2025 meetings of the American Anthropological Association, I&rsquo;m organizing a panel on the anthropology of contraptions.</p>
+      <p>I am currently a faculty affiliate with the Berkman Klein Center for Internet &amp; Society at Harvard and a Canadian Institute for Advanced Research fellow, in their Future Flourishing program.</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

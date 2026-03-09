@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Font Sampler 2 — Weirder Options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Brygada+1918:ital,wght@0,400;0,700;1,400;1,700&family=Instrument+Serif:ital@0;1&family=Young+Serif&family=Zilla+Slab:ital,wght@0,400;0,700;1,400;1,700&family=Yrsa:ital,wght@0,400;0,700;1,400;1,700&family=Cardo:ital,wght@0,400;0,700;1,400&family=Rosarivo:ital@0;1&family=Sahitya:wght@400;700&family=Gabriela&family=Piazzolla:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #8fafbc;
+  --text: rgba(0, 0, 0, 0.85);
+  --text-secondary: rgba(0, 0, 0, 0.75);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { background: white; }
+
+body {
+  background: var(--bg);
+  margin: 1.2rem;
+  padding: 2rem 3rem;
+  color: var(--text);
+  font-family: system-ui, sans-serif;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1.page-title {
+  font-family: system-ui, sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5em;
+}
+
+.instructions {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 2.5rem;
+  max-width: 50rem;
+  line-height: 1.5;
+}
+
+.font-sample {
+  margin-bottom: 3.5rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(0,0,0,0.12);
+}
+
+.font-sample:last-child {
+  border-bottom: none;
+}
+
+.font-label {
+  font-family: system-ui, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(0,0,0,0.5);
+  margin-bottom: 1.5rem;
+}
+
+.font-label span {
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.8rem;
+}
+
+.sample-grid {
+  display: grid;
+  grid-template-columns: 9rem 30rem;
+  gap: 3rem;
+}
+
+.sample-nav {
+  text-align: right;
+  padding-top: 0.2rem;
+}
+
+.sample-nav-item {
+  display: block;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--text);
+  margin-bottom: 0.7em;
+}
+
+.sample-nav-vitae {
+  display: block;
+  text-transform: none;
+  font-style: italic;
+  letter-spacing: 0;
+  font-size: 1.05rem;
+  color: var(--text);
+  margin-top: 1.2em;
+}
+
+.sample-content {
+  font-kerning: auto;
+  font-variant-ligatures: common-ligatures;
+  text-rendering: optimizeLegibility;
+}
+
+.sample-title {
+  font-size: 4.0rem;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.1em;
+}
+
+.sample-subtitle {
+  font-size: 1.25rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  line-height: 1.25;
+  margin-bottom: 1.8rem;
+}
+
+.sample-intro {
+  font-size: 1.25rem;
+  line-height: 1.25;
+  margin-bottom: 0;
+}
+
+.sample-ornament {
+  text-align: center;
+  margin: 1rem 0;
+  font-size: 1.1rem;
+  color: var(--text);
+}
+
+.sample-body {
+  font-size: 1.05rem;
+  line-height: 1.3;
+}
+
+.sample-body p + p {
+  text-indent: 2em;
+}
+
+.sample-body p { margin: 0; }
+
+/* Also show the 4 finalists from round 1 at top for comparison */
+.divider {
+  font-family: system-ui, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 2rem 0 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 3px solid rgba(0,0,0,0.2);
+  color: rgba(0,0,0,0.5);
+}
+</style>
+</head>
+<body>
+
+<h1 class="page-title">Font Sampler 2 — Weirder Serifs</h1>
+<p class="instructions">Ten stranger, more opinionated options. Your round-1 finalists were: Cormorant (2), Bodoni Moda (4), EB Garamond (5), Spectral (8). Nav now in body text color throughout.</p>
+
+<script>
+var fonts = [
+  { name: "Brygada 1918", family: "'Brygada 1918', serif", note: "Polish revival. Muscular, sharp wedge serifs, strong personality." },
+  { name: "Piazzolla", family: "'Piazzolla', serif", note: "Named after the tango composer. Crisp, rhythmic, angular energy." },
+  { name: "Instrument Serif", family: "'Instrument Serif', serif", note: "High contrast display. Thin hairlines, thick strokes, editorial feel." },
+  { name: "Young Serif", family: "'Young Serif', serif", note: "Chunky, warm, slightly retro. Very present on the page." },
+  { name: "Zilla Slab", family: "'Zilla Slab', serif", note: "Mozilla's slab serif. Geometric, mechanical, distinctive." },
+  { name: "Yrsa", family: "'Yrsa', serif", note: "Czech/Indian collaboration. Compact, efficient, slightly quirky." },
+  { name: "Cardo", family: "'Cardo', serif", note: "Scholarly old-style based on Bembo. Dense, textured, academic." },
+  { name: "Rosarivo", family: "'Rosarivo', serif", note: "Argentine Garamond. Soft, warm, slightly loose, calligraphic." },
+  { name: "Sahitya", family: "'Sahitya', serif", note: "Multi-script design. Heavy, bold presence, unusual proportions." },
+  { name: "Gabriela", family: "'Gabriela', serif", note: "Display serif with swash-like curves. Ornate, distinctive." },
+];
+
+var introText = "I study how people use technology to make sense of cultural things. I teach in the Department of Anthropology at Tufts University, where I also direct the program in Science, Technology, and Society.";
+
+var bodyText1 = "My first book is about the people who make music recommender systems and how they think about music, listening, and listeners. It\u2019s called <em>Computing Taste</em>, and it was published by the University of Chicago Press in 2022.";
+
+var bodyText2 = "I\u2019m working on a new book about the many meanings of attention today, from neural networks to the new tech humanism. Its working title is <em>Attention Fragments</em>, and it\u2019s under contract with the University of Chicago Press.";
+
+fonts.forEach(function(f, i) {
+  var html = '<div class="font-sample">';
+  html += '<div class="font-label">' + (i+1) + '. ' + f.name + ' <span>\u2014 ' + f.note + '</span></div>';
+  html += '<div class="sample-grid">';
+
+  html += '<div class="sample-nav" style="font-family:' + f.family + '">';
+  html += '<span class="sample-nav-item">Writing</span>';
+  html += '<span class="sample-nav-item">Talking</span>';
+  html += '<span class="sample-nav-item">Teaching</span>';
+  html += '<span class="sample-nav-vitae">Vitae</span>';
+  html += '</div>';
+
+  html += '<div class="sample-content" style="font-family:' + f.family + '">';
+  html += '<div class="sample-title">Nick Seaver</div>';
+  html += '<div class="sample-subtitle">Anthropologist, Tufts University</div>';
+  html += '<div class="sample-intro">' + introText + '</div>';
+  html += '<div class="sample-ornament">\u2193</div>';
+  html += '<div class="sample-body"><p>' + bodyText1 + '</p><p>' + bodyText2 + '</p></div>';
+  html += '</div>';
+
+  html += '</div>';
+  html += '</div>';
+
+  document.write(html);
+});
+</script>
+
+</body>
+</html>

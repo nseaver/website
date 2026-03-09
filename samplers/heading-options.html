@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Heading Options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --teal: #8fafbc;
+  --page: #faf7f2;
+  --text: rgba(0, 0, 0, 0.84);
+  --text-secondary: rgba(0, 0, 0, 0.6);
+  --text-faint: rgba(0, 0, 0, 0.35);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--teal);
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 1.15rem;
+  line-height: 1.48;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  font-kerning: auto;
+  font-variant-ligatures: common-ligatures;
+  font-variant-numeric: oldstyle-nums proportional-nums;
+  text-rendering: optimizeLegibility;
+}
+
+.option-label {
+  font-family: system-ui, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: white;
+  padding: 1.5rem 0 0.8rem;
+  text-align: center;
+}
+
+.option-label span {
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  display: block;
+  font-size: 0.8rem;
+  margin-top: 0.3em;
+  opacity: 0.8;
+}
+
+.page {
+  background: var(--page);
+  max-width: 54rem;
+  margin: 0 auto 2rem;
+  padding: 4rem 4.5rem 4rem 3rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 9.5rem 32rem;
+  gap: 2.8rem;
+}
+
+.margin {
+  text-align: right;
+  font-size: 0.9rem;
+  line-height: 1.38;
+}
+
+.text-block {
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  text-align-last: left;
+}
+
+.text-block p { margin: 0; }
+.text-block p + p { text-indent: 1.5em; }
+.text-block .numbered-sub + p,
+.text-block .section-heading-b + p { text-indent: 0; }
+
+/* ---- OPTION A: Numbered sections ---- */
+
+.numbered-heading {
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.1em;
+  font-size: 1.15rem;
+  font-weight: 400;
+  line-height: 1.48;
+  margin-bottom: 0.15em;
+}
+
+.numbered-heading .num {
+  font-variant-caps: normal;
+  font-variant-numeric: oldstyle-nums;
+  letter-spacing: 0;
+  margin-right: 0.4em;
+}
+
+.numbered-sub {
+  font-style: italic;
+  margin-bottom: 1.2em;
+}
+
+.numbered-sub .num {
+  font-style: normal;
+  font-variant-numeric: oldstyle-nums;
+  margin-right: 0.3em;
+  font-size: 0.95em;
+}
+
+/* ---- OPTION B: Running head ---- */
+
+.running-head {
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.1em;
+  font-size: 0.92rem;
+  text-align: right;
+  text-align-last: right;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+  padding-bottom: 0;
+}
+
+.section-heading-b {
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.1em;
+  font-size: 1.15rem;
+  font-weight: 400;
+  line-height: 1.48;
+  margin-bottom: 0.8em;
+}
+
+/* ---- OPTION C: Chapter opening ---- */
+
+.chapter-rule {
+  border: none;
+  border-top: 0.5px solid rgba(0,0,0,0.25);
+  margin: 0 0 1.8rem;
+  width: 100%;
+}
+
+.chapter-title {
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.15em;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.3;
+  margin-bottom: 0.2em;
+}
+
+.chapter-subtitle {
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  margin-bottom: 2em;
+}
+
+/* ---- Shared ---- */
+
+.stub-text {
+  text-indent: 0;
+  margin-bottom: 0;
+}
+
+.date {
+  text-align: right;
+  text-align-last: right;
+  font-style: italic;
+  margin-top: 0.8em;
+  font-size: 1rem;
+}
+
+.section-break {
+  margin: 2rem 0 1.8rem;
+}
+</style>
+</head>
+<body>
+
+<!-- ============ OPTION A ============ -->
+<div class="option-label">Option A — Numbered Sections<span>Like Bringhurst&rsquo;s &ldquo;4.4 Tables &amp; Lists&rdquo; / &ldquo;4.4.1 Edit tables with the same attention...&rdquo;</span></div>
+<div class="page">
+  <div class="grid">
+    <div class="margin"></div>
+    <div class="text-block">
+      <p class="stub-text">Internet &amp; Society at Harvard and a Canadian Institute for Advanced Research fellow, in their Future Flourishing program.</p>
+      <p class="date">March 2026</p>
+      <div class="section-break"></div>
+      <h1 class="numbered-heading"><span class="num">4.4</span> Nick Seaver</h1>
+      <p class="numbered-sub"><span class="num">4.4.1</span> <em>Anthropologist, Tufts University</em></p>
+      <p>I study how people use technology to make sense of cultural things. I teach in the Department of Anthropology at Tufts University, where I also direct the program in Science, Technology, and Society.</p>
+      <p>My first book is about the people who make music recommender systems and how they think about music, listening, and listeners.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ OPTION B ============ -->
+<div class="option-label">Option B — Running Head<span>Affiliation as running head at top of page, name as section heading below</span></div>
+<div class="page">
+  <div class="grid">
+    <div class="margin"></div>
+    <div class="text-block">
+      <p class="running-head">Anthropologist, Tufts University</p>
+      <p class="stub-text">Internet &amp; Society at Harvard and a Canadian Institute for Advanced Research fellow, in their Future Flourishing program.</p>
+      <p class="date">March 2026</p>
+      <div class="section-break"></div>
+      <h1 class="section-heading-b">Nick Seaver</h1>
+      <p>I study how people use technology to make sense of cultural things. I teach in the Department of Anthropology at Tufts University, where I also direct the program in Science, Technology, and Society.</p>
+      <p>My first book is about the people who make music recommender systems and how they think about music, listening, and listeners.</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

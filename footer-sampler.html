@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Footer Sampler — nickseaver.net</title>
+<link rel="preload" href="fonts/EBGaramond-Roman.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/EBGaramond-Italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="mockup.css">
+<style>
+/* Teaching crosshead style */
+.entry-title {
+  text-align: center;
+  text-align-last: center;
+  margin-top: calc(2 * var(--line));
+  margin-bottom: var(--line);
+  padding-left: 0;
+}
+
+/* ---- Footer options ---- */
+.page-end {
+  margin-top: calc(2 * var(--line));
+  text-align: center;
+  text-align-last: center;
+  color: var(--text-secondary);
+}
+
+/* ---- Overlay controls ---- */
+.controls {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 100;
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 1rem;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 0.6em 0.9em;
+  border-radius: 4px;
+  line-height: 1.8;
+}
+.controls .ctl-label {
+  font-size: 0.8rem;
+  opacity: 0.6;
+  display: block;
+}
+.controls a {
+  color: #fff;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-thickness: 0.5px;
+  text-underline-offset: 0.15em;
+  margin: 0 0.2em;
+}
+.controls a:hover { opacity: 0.7; }
+.controls a.active {
+  text-decoration: none;
+  background: rgba(255,255,255,0.2);
+  padding: 0.05em 0.25em;
+  margin: 0 0;
+}
+
+.end-option { display: none; }
+.end-option.active { display: block; }
+</style>
+</head>
+<body>
+
+<div class="controls">
+  <span class="ctl-label">ending</span>
+  <a class="end-toggle active" data-end="fleuron">fleuron</a>
+  <a class="end-toggle" data-end="leaf">leaf</a>
+  <a class="end-toggle" data-end="asterism">asterism</a>
+  <a class="end-toggle" data-end="rule">rule</a>
+  <a class="end-toggle" data-end="dots">dots</a>
+  <a class="end-toggle" data-end="dash">dash</a>
+  <a class="end-toggle" data-end="hedera">hedera</a>
+  <a class="end-toggle" data-end="pilcrow">pilcrow</a>
+  <a class="end-toggle" data-end="lozenge">lozenge</a>
+  <a class="end-toggle" data-end="none">none</a>
+</div>
+
+<div class="page">
+  <div class="page-row">
+    <div class="margin">
+      <a class="running-head" href="home-mockup.html">Nick Seaver</a>
+      <nav>
+        <a class="nav-item" href="writing-mockup.html">Writing</a>
+        <a class="nav-item" href="talking-mockup.html">Talking</a>
+        <a class="nav-item" href="teaching-mockup.html">Teaching</a>
+        <a class="nav-vitae" href="vitae-mockup.html">Vitae</a>
+      </nav>
+    </div>
+    <div class="text-block">
+      <h1 class="section-heading">Teaching</h1>
+
+      <!-- Just the last two courses for context -->
+
+      <div class="entry">
+        <h2 class="entry-title">History of Anthropological Thought</h2>
+        <p class="entry-desc">This is a course intended for anthropology majors at Tufts, who usually take it in their junior or senior year, which introduces them to the canonical history of the field and some critiques of it. My version of it is not especially groundbreaking, but you can see how I taught it in <a href="#">Fall 2020</a>.</p>
+        <p>I usually require four short essay assignments: the first involves reading a snippy exchange of letters between Alfred Radcliffe-Brown and Robert Lowie and appraising them in historicist and presentist terms; the second asks students to adapt mid-century anthropological critiques of new computational methods to contemporary big data techniques for making sense of cultural phenomena; the third has them choose a common figure in social theoretical writing (like trees, blood, or water) and analyze how authors have used it over the course of the semester; the fourth asks them to read a recent piece of ethnographic writing and to locate it in the history we&rsquo;ve learned over the course of the semester.</p>
+      </div>
+
+      <div class="entry">
+        <h2 class="entry-title">Introduction to the Anthropology of Science and Technology</h2>
+        <p class="entry-desc">An introductory survey of STS and the anthropological study of science and technology. This is a pretty typical, wide-ranging survey that covers topics like boundary work and pseudoscience, techniques of the body, mechanical objectivity, and classification.</p>
+        <p>You can read a version of the syllabus from <a href="#">Spring 2020</a>; more recent semesters have been built out on Canvas in a way that makes them hard to share online.</p>
+      </div>
+
+      <!-- Footer options -->
+
+      <div class="end-option active" data-end="fleuron">
+        <div class="page-end">&#10087;</div>
+      </div>
+
+      <div class="end-option" data-end="leaf">
+        <div class="page-end">&#9753;</div>
+      </div>
+
+      <div class="end-option" data-end="asterism">
+        <div class="page-end">&#8258;</div>
+      </div>
+
+      <div class="end-option" data-end="rule">
+        <div class="page-end"><span style="display: inline-block; width: 3em; border-top: 0.5px solid var(--text-faint);"></span></div>
+      </div>
+
+      <div class="end-option" data-end="dots">
+        <div class="page-end">&middot;&ensp;&middot;&ensp;&middot;</div>
+      </div>
+
+      <div class="end-option" data-end="dash">
+        <div class="page-end">&#8212;</div>
+      </div>
+
+      <div class="end-option" data-end="hedera">
+        <div class="page-end">&#10086;</div>
+      </div>
+
+      <div class="end-option" data-end="pilcrow">
+        <div class="page-end">&#8267;</div>
+      </div>
+
+      <div class="end-option" data-end="lozenge">
+        <div class="page-end">&#9674;</div>
+      </div>
+
+      <div class="end-option" data-end="none">
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.end-toggle').forEach(function(el) {
+    el.addEventListener('click', function(e) {
+      e.preventDefault();
+      var end = this.dataset.end;
+      document.querySelectorAll('.end-toggle').forEach(function(t) {
+        t.classList.toggle('active', t.dataset.end === end);
+      });
+      document.querySelectorAll('.end-option').forEach(function(v) {
+        v.classList.toggle('active', v.dataset.end === end);
+      });
+    });
+  });
+});
+</script>
+
+</body>
+</html>

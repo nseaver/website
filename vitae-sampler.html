@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vitae Sampler — nickseaver.net</title>
+<link rel="preload" href="fonts/EBGaramond-Roman.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/EBGaramond-Italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="mockup.css">
+<style>
+  /* ---- Inline bio switcher ---- */
+  .bio-inline-switcher {
+    font-style: italic;
+    color: var(--text-secondary);
+  }
+  .bio-inline-switcher a {
+    color: var(--text-secondary);
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-thickness: 0.5px;
+    text-underline-offset: 0.15em;
+  }
+  .bio-inline-switcher a:hover {
+    color: var(--text);
+  }
+
+  /* ---- Quiet download line ---- */
+  .downloads-quiet {
+    padding-top: var(--line);
+    margin-top: var(--line);
+    text-indent: 0;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+  }
+  .downloads-quiet a {
+    color: var(--text-secondary);
+    text-decoration: underline;
+    text-decoration-thickness: 0.5px;
+    text-underline-offset: 0.15em;
+  }
+  .downloads-quiet a:hover {
+    color: var(--text);
+  }
+
+  /* ---- Overlay controls ---- */
+  .controls {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 100;
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 1rem;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 0.6em 0.9em;
+    border-radius: 4px;
+    line-height: 1.8;
+  }
+  .controls .ctl-label {
+    font-size: 0.8rem;
+    opacity: 0.6;
+    display: block;
+    margin-top: 0.4em;
+  }
+  .controls .ctl-label:first-child {
+    margin-top: 0;
+  }
+  .controls a {
+    color: #fff;
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-thickness: 0.5px;
+    text-underline-offset: 0.15em;
+    margin: 0 0.25em;
+  }
+  .controls a:hover {
+    opacity: 0.7;
+  }
+  .controls a.active {
+    text-decoration: none;
+    background: rgba(255,255,255,0.2);
+    padding: 0.05em 0.25em;
+    margin: 0 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="controls">
+  <span class="ctl-label">drop (lines)</span>
+  <a class="drop-toggle" data-drop="0">0</a>
+  <a class="drop-toggle" data-drop="1">1</a>
+  <a class="drop-toggle" data-drop="2">2</a>
+  <a class="drop-toggle" data-drop="3">3</a>
+  <a class="drop-toggle active" data-drop="4">4</a>
+  <a class="drop-toggle" data-drop="6">6</a>
+  <a class="drop-toggle" data-drop="8">8</a>
+  <span class="ctl-label">page frame</span>
+  <a class="frame-toggle" data-frame="match">match</a>
+  <a class="frame-toggle active" data-frame="equal-blue">equal blue</a>
+</div>
+
+<div class="page" id="the-page">
+  <div class="page-row">
+    <div class="margin">
+      <a class="running-head" href="home-mockup.html">Nick Seaver</a>
+      <nav>
+        <a class="nav-item" href="writing-mockup.html">Writing</a>
+        <a class="nav-item" href="talking-mockup.html">Talking</a>
+        <a class="nav-item" href="teaching-mockup.html">Teaching</a>
+        <a class="nav-vitae" href="vitae-mockup.html">Vitae</a>
+      </nav>
+    </div>
+    <div class="text-block" id="text-block">
+
+      <div class="bio-section active" data-bio="medium">
+        <p>Nick Seaver is Associate Professor of Anthropology at Tufts University, where he also directs the program in Science, Technology &amp; Society. His research has appeared in venues including <em>Cultural Anthropology</em>, <em>Cultural Studies</em>, <em>Big Data &amp; Society</em>, and the <em>Journal of the Royal Anthropological Institute</em>. He is the author of <em>Computing Taste: Algorithms and the Makers of Music Recommendation</em> (2022), an ethnographic study of music recommender system developers. His current research examines the rise of attention as a value and virtue in machine learning worlds. <span class="bio-inline-switcher">(<a data-bio="short">shorter</a>, <a data-bio="long">longer</a>)</span></p>
+      </div>
+
+      <div class="bio-section" data-bio="short">
+        <p>Nick Seaver is Associate Professor of Anthropology at Tufts University, where he also directs the program in Science, Technology &amp; Society. He is the author of <em>Computing Taste: Algorithms and the Makers of Music Recommendation</em> (2022). <span class="bio-inline-switcher">(<a data-bio="medium">medium</a>, <a data-bio="long">longer</a>)</span></p>
+      </div>
+
+      <div class="bio-section" data-bio="long">
+        <p>Nick Seaver is Associate Professor of Anthropology at Tufts University, where he also directs the program in Science, Technology &amp; Society. His research examines the cultural theorizing of technical experts, particularly in fields related to machine learning, and has appeared in venues including <em>Cultural Anthropology</em>, <em>Cultural Studies</em>, <em>Big Data &amp; Society</em>, and the <em>Journal of the Royal Anthropological Institute</em>. He is the author of <em>Computing Taste: Algorithms and the Makers of Music Recommendation</em> (2022), an ethnographic study of music recommender system developers. He co-edited <em>Towards an Anthropology of Data</em> (2021) and was formerly co-chair of the Committee for the Anthropology of Science, Technology, and Computing. His current research examines the rise of attention as a value and virtue in machine learning worlds. <span class="bio-inline-switcher">(<a data-bio="short">shorter</a>, <a data-bio="medium">medium</a>)</span></p>
+      </div>
+
+      <p class="downloads-quiet"><a href="https://www.dropbox.com/scl/fi/kawvzi6tplj8gzp2tyqch/seaver-headshot2-sq.jpg?rlkey=lpytpk7emp1z9ew78kd7b0a96&dl=0">Headshot</a> · <a href="https://www.dropbox.com/scl/fi/co6t9bcp5q7dw7yx8grwq/seaver-CV.pdf?rlkey=fmwf8cnakjcw17lalfqc9f587&st=g0zcnz50&dl=0">CV</a></p>
+
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var page = document.getElementById('the-page');
+  var textBlock = document.getElementById('text-block');
+  var lineHeight = 1.5; // rem
+  var pageTopPad = 5; // rem — the .page top padding from mockup.css
+  var currentDrop = 4;
+  var currentFrame = 'equal-blue';
+
+  function applyLayout() {
+    var dropRem = currentDrop * lineHeight;
+    textBlock.style.paddingTop = dropRem ? dropRem + 'rem' : '0';
+
+    // Reset
+    page.style.paddingBottom = '';
+    document.body.style.minHeight = '';
+    document.body.style.display = '';
+    document.body.style.flexDirection = '';
+    page.style.margin = '';
+
+    if (currentFrame === 'match') {
+      // Equal whitespace inside the cream page
+      page.style.paddingBottom = (pageTopPad + dropRem) + 'rem';
+    } else if (currentFrame === 'equal-blue') {
+      // Page top margin is 2.5rem; make bottom margin match
+      // Page fills the remaining viewport height between equal margins
+      page.style.margin = '2.5rem auto';
+      page.style.minHeight = 'calc(100vh - 5rem)';
+    }
+  }
+
+  // Drop toggles
+  document.querySelectorAll('.drop-toggle').forEach(function(el) {
+    el.addEventListener('click', function(e) {
+      e.preventDefault();
+      currentDrop = parseInt(this.dataset.drop);
+      document.querySelectorAll('.drop-toggle').forEach(function(t) {
+        t.classList.toggle('active', parseInt(t.dataset.drop) === currentDrop);
+      });
+      applyLayout();
+    });
+  });
+
+  // Frame toggles
+  document.querySelectorAll('.frame-toggle').forEach(function(el) {
+    el.addEventListener('click', function(e) {
+      e.preventDefault();
+      currentFrame = this.dataset.frame;
+      document.querySelectorAll('.frame-toggle').forEach(function(t) {
+        t.classList.toggle('active', t.dataset.frame === currentFrame);
+      });
+      applyLayout();
+    });
+  });
+
+  // Bio switcher
+  document.querySelectorAll('a[data-bio]').forEach(function(el) {
+    el.addEventListener('click', function(e) {
+      e.preventDefault();
+      var bio = this.dataset.bio;
+      document.querySelectorAll('.bio-section').forEach(function(s) {
+        s.classList.toggle('active', s.dataset.bio === bio);
+      });
+    });
+  });
+
+  applyLayout();
+});
+</script>
+
+</body>
+</html>

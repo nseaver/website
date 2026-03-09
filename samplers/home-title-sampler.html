@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home title sampler — nickseaver.net</title>
+<link rel="preload" href="fonts/EBGaramond-Roman.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/EBGaramond-Italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="mockup.css">
+<style>
+  /* Match nav position from subpages: 6 lines padding + running head + gap = 8 lines */
+  .margin { padding-top: calc(8 * var(--line)); }
+
+  /* ---- Style switcher ---- */
+  .style-switcher {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    background: var(--page);
+    border: 1px solid var(--text-faint);
+    padding: 0.75rem 1rem;
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    z-index: 100;
+  }
+
+  .style-switcher .switcher-label {
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+  }
+
+  .style-switcher a {
+    display: block;
+    color: var(--text);
+    text-decoration: underline;
+    text-decoration-thickness: 0.5px;
+    text-underline-offset: 0.12em;
+    cursor: pointer;
+  }
+
+  .style-switcher a:hover {
+    color: var(--text-secondary);
+  }
+
+  .style-switcher a.active {
+    background: rgba(0, 0, 0, 0.08);
+    padding: 0 0.2em;
+    margin: 0 -0.2em;
+    text-decoration: none;
+  }
+
+  /* ---- Base for all title styles ---- */
+  .page-title, .page-subtitle {
+    text-align: left;
+    text-align-last: left;
+  }
+
+  .section-break-title {
+    margin: var(--line) 0;
+  }
+
+  /*
+     Grid rules:
+     --line = 1.5rem
+     All line-heights: multiples of var(--line)
+     All margins/padding: multiples of var(--line)
+     Title occupies 2 lines (3rem l-h) → font up to ~2.3rem
+                  or 3 lines (4.5rem l-h) → font up to ~3.5rem
+     Subtitle occupies 1 line (1.5rem l-h) → body size
+     Drop = space between subtitle and body text
+  */
+
+  /*
+     All roman title + italic subtitle, no gap, body aligns with nav at line 8.
+     title lines + subtitle lines + drop = 8
+
+     3-line title (4.5rem l-h): font ~3.2rem
+     4-line title (6rem l-h): font ~4.2rem
+     1-line subtitle (1.5rem l-h): font 1.15rem (body size)
+     2-line subtitle (3rem l-h): font ~1.7rem
+  */
+
+  /*
+     All: roman title + 1-line italic subtitle, body aligns with nav at line 8.
+     3-line title + 1-line sub + 4-line drop = 8
+     4-line title + 1-line sub + 3-line drop = 8
+     Font size varies within each band to show loose → snug.
+  */
+
+  /*
+     "Normal": title on N lines, subtitle on next grid line.
+     "Tight": subtitle pulled up 1 grid line into the title's space
+              (title gets N-1 lines, subtitle overlaps the last title line).
+     Body still aligns with nav at line 8.
+  */
+
+  /* A: 3-line title, 3.2rem, normal — sub on line 4, drop 4 */
+  .style-a .page-title {
+    font-size: 3.2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: calc(3 * var(--line));
+    margin-bottom: 0;
+  }
+  .style-a .page-subtitle {
+    font-style: italic;
+    font-size: 1.15rem;
+    line-height: var(--line);
+  }
+  .style-a .section-break-title {
+    margin: calc(4 * var(--line)) 0;
+  }
+
+  /* B: 3-line title, 3.2rem, tight — down 1 line, drop 4 */
+  .style-b .page-title {
+    font-size: 3.2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: calc(2 * var(--line));
+    margin-top: var(--line);
+    margin-bottom: 0;
+  }
+  .style-b .page-subtitle {
+    font-style: italic;
+    font-size: 1.15rem;
+    line-height: var(--line);
+  }
+  .style-b .section-break-title {
+    margin: calc(4 * var(--line)) 0;
+  }
+
+  /* C: 3-line title, 3.6rem, normal — sub on line 4, drop 4 */
+  .style-c .page-title {
+    font-size: 3.6rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: calc(3 * var(--line));
+    margin-bottom: 0;
+  }
+  .style-c .page-subtitle {
+    font-style: italic;
+    font-size: 1.15rem;
+    line-height: var(--line);
+  }
+  .style-c .section-break-title {
+    margin: calc(4 * var(--line)) 0;
+  }
+
+  /* D: 3-line title, 3.6rem, tight — down 1 line, drop 4 */
+  .style-d .page-title {
+    font-size: 3.6rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: calc(2 * var(--line));
+    margin-top: var(--line);
+    margin-bottom: 0;
+  }
+  .style-d .page-subtitle {
+    font-style: italic;
+    font-size: 1.15rem;
+    line-height: var(--line);
+  }
+  .style-d .section-break-title {
+    margin: calc(4 * var(--line)) 0;
+  }
+
+  /* E: 4-line title, 4.8rem, normal — sub on line 5, drop 3 */
+  .style-e .page-title {
+    font-size: 4.8rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: calc(4 * var(--line));
+    margin-bottom: 0;
+  }
+  .style-e .page-subtitle {
+    font-style: italic;
+    font-size: 1.15rem;
+    line-height: var(--line);
+  }
+  .style-e .section-break-title {
+    margin: calc(3 * var(--line)) 0;
+  }
+
+  /* F: 4-line title, 4.8rem, tight — title on 3-line l-h, sub on line 4, drop 4 */
+  .style-f .page-title {
+    font-size: 4.8rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: calc(3 * var(--line));
+    margin-bottom: 0;
+  }
+  .style-f .page-subtitle {
+    font-style: italic;
+    font-size: 1.15rem;
+    line-height: var(--line);
+  }
+  .style-f .section-break-title {
+    margin: calc(4 * var(--line)) 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="style-switcher">
+  <div class="switcher-label">Title style</div>
+  <a class="active" onclick="setStyle('a')">A. 3-line, 3.2rem, normal</a>
+  <a onclick="setStyle('b')">B. 3-line, 3.2rem, tight</a>
+  <a onclick="setStyle('c')">C. 3-line, 3.6rem, normal</a>
+  <a onclick="setStyle('d')">D. 3-line, 3.6rem, tight</a>
+  <a onclick="setStyle('e')">E. 4-line, 4.8rem, normal</a>
+  <a onclick="setStyle('f')">F. 4-line, 4.8rem, tight</a>
+</div>
+
+<div class="page">
+
+  <div class="page-row">
+    <div class="margin">
+      <nav>
+        <a class="nav-item" href="writing-mockup.html">Writing</a>
+        <a class="nav-item" href="talking-mockup.html">Talking</a>
+        <a class="nav-item" href="teaching-mockup.html">Teaching</a>
+        <a class="nav-vitae" href="vitae-mockup.html">Vitae</a>
+      </nav>
+      <div class="sidenote">See <em><a href="writing-mockup.html">Writing</a></em> for a full list of publications with descriptions and links.</div>
+    </div>
+    <div class="text-block style-a" id="content">
+      <h1 class="page-title">Nick Seaver</h1>
+      <p class="page-subtitle">Anthropologist, Tufts University</p>
+      <div class="section-break-title"></div>
+      <p>I study how people use technology to make sense of cultural things. I teach in the <a href="https://as.tufts.edu/anthropology/">Department of Anthropology</a> at Tufts University, where I also direct the program in <a href="https://as.tufts.edu/sts/">Science, Technology, and Society</a>.</p>
+      <p>My first book is about the people who make music recommender systems and how they think about music, listening, and listeners. It&rsquo;s called <a href="https://press.uchicago.edu/ucp/books/book/chicago/C/bo183892298.html"><em>Computing Taste</em></a>, and it was published by the University of Chicago Press in 2022.</p>
+      <p>I&rsquo;m working on a new book about the many meanings of attention today, from neural networks to the new tech humanism. Its working title is <em>Attention Fragments</em>, and it&rsquo;s under contract with the University of Chicago Press.</p>
+      <p>I&rsquo;ve got a handful of pieces making their way through the publication pipeline on various topics: ideologies of attention in ethnographic fieldwork, the media theory of mouse jigglers, and how people use clues to identify AI-generated writing.</p>
+      <p>For the 2025 meetings of the American Anthropological Association, I&rsquo;m organizing a panel on the anthropology of contraptions.</p>
+      <p>I am currently a faculty affiliate with the <a href="https://cyber.harvard.edu/">Berkman Klein Center for Internet &amp; Society</a> at Harvard and a <a href="https://cifar.ca/">Canadian Institute for Advanced Research</a> fellow, in their Future Flourishing Program.</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function setStyle(style) {
+  var el = document.getElementById('content');
+  el.className = 'text-block style-' + style;
+
+  var links = document.querySelectorAll('.style-switcher a');
+  links.forEach(function(a) { a.classList.remove('active'); });
+  event.target.classList.add('active');
+}
+</script>
+
+</body>
+</html>
