@@ -417,6 +417,9 @@ button.filter-link {
 }
 
 .bio-inline-switcher a {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
   color: var(--text);
   cursor: pointer;
   text-decoration: underline;
@@ -425,9 +428,17 @@ button.filter-link {
   text-decoration-skip-ink: all;
 }
 
+.bio-inline-switcher a::after {
+  content: attr(data-text);
+  font-weight: 800;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+}
+
 .bio-inline-switcher a:hover {
   font-weight: 800;
-  text-decoration-thickness: 1.5px;
+  text-decoration-thickness: 2px;
 }
 
 /* ---- Downloads (Vitae) ---- */
@@ -443,9 +454,20 @@ button.filter-link {
 }
 
 .downloads a {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
   color: var(--text);
   text-decoration: none;
   margin-right: 0.75em;
+}
+
+.downloads a::after {
+  content: attr(data-text);
+  font-weight: 800;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
 }
 
 .downloads a:hover {
