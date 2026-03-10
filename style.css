@@ -409,12 +409,7 @@ button.filter-link {
 }
 
 .bio-wordcount {
-  display: none;
-  font-family: var(--display);
-  font-size: 0.8rem;
   font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
 }
 
 .bio-section p {
