@@ -43,6 +43,7 @@
   --text-width: 34rem;
   --display: 'Barlow', sans-serif;
   --page-margin: clamp(0rem, calc((100vw - 50rem) / 2), 2.5rem);
+  --header-height: 5.5rem;
 }
 
 @view-transition { navigation: auto; }
@@ -183,6 +184,8 @@ body {
 
 .margin nav {
   text-align: left;
+  position: sticky;
+  top: calc(var(--page-margin) + 4.5rem + var(--header-height) + 4 * var(--line));
 }
 
 .margin .nav-item {
