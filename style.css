@@ -43,7 +43,7 @@
   --text-width: 34rem;
   --display: 'Barlow', sans-serif;
   --page-margin: clamp(0rem, calc((100vw - 50rem) / 2), 2.5rem);
-  --nav-top: 19rem;
+  --nav-top: calc(var(--page-margin) + 16.5rem);
 }
 
 @view-transition { navigation: auto; }
