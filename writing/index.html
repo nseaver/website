@@ -15,6 +15,7 @@
 <link rel="preload" href="/fonts/EBGaramond-Italic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/Barlow-500.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/Barlow-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/BarlowSemiCondensed-500i.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
@@ -32,7 +33,7 @@
 
   <div class="page-row">
     <div class="margin">
-      <nav>
+      <nav aria-label="Site navigation">
         <span class="nav-item active" aria-current="page" data-text="Writing">Writing</span>
         <a class="nav-item" href="/talking/" data-text="Talking">Talking</a>
         <a class="nav-item" href="/teaching/" data-text="Teaching">Teaching</a>
@@ -43,7 +44,7 @@
       <div class="intro">
         <p>Below, you can find a list of my publications with brief descriptions and links. If you’d like to read anything here and can’t access it, please feel free to <a href="mailto:nick.seaver@tufts.edu">email me</a> and request a copy.</p>
       </div>
-      <p class="filter-bar" id="filterBar"><button type="button" class="filter-link active" id="filterAll" data-text="All">All</button> <button type="button" class="filter-link" data-tag="algorithms" data-text="Algorithms">Algorithms</button> <button type="button" class="filter-link" data-tag="anthropology" data-text="Anthropology">Anthropology</button> <button type="button" class="filter-link" data-tag="attention" data-text="Attention">Attention</button></p>
+      <p class="filter-bar" id="filterBar"><button type="button" class="filter-link active" id="filterAll" aria-pressed="true" data-text="All">All</button> <button type="button" class="filter-link" aria-pressed="false" data-tag="algorithms" data-text="Algorithms">Algorithms</button> <button type="button" class="filter-link" aria-pressed="false" data-tag="anthropology" data-text="Anthropology">Anthropology</button> <button type="button" class="filter-link" aria-pressed="false" data-tag="attention" data-text="Attention">Attention</button></p>
 
       <div class="entry" data-tags="anthropology">
         <h2 class="entry-title"><a href="https://anthrosource.onlinelibrary.wiley.com/toc/23304847/current">Work and the Data Economy</a></h2>
@@ -265,12 +266,14 @@ document.addEventListener('DOMContentLoaded', function() {
           var tags = e.getAttribute('data-tags').split(' ');
           e.classList.toggle('hidden', tags.indexOf(tag) === -1);
         });
-        links.forEach(function(l) { l.classList.remove('active'); });
+        links.forEach(function(l) { l.classList.remove('active'); l.setAttribute('aria-pressed', 'false'); });
         this.classList.add('active');
+        this.setAttribute('aria-pressed', 'true');
       } else {
         entries.forEach(function(e) { e.classList.remove('hidden'); });
-        links.forEach(function(l) { l.classList.remove('active'); });
+        links.forEach(function(l) { l.classList.remove('active'); l.setAttribute('aria-pressed', 'false'); });
         document.getElementById('filterAll').classList.add('active');
+        document.getElementById('filterAll').setAttribute('aria-pressed', 'true');
       }
     });
   });

@@ -15,6 +15,7 @@
 <link rel="preload" href="/fonts/EBGaramond-Italic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/Barlow-500.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/Barlow-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/BarlowSemiCondensed-500i.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
@@ -32,7 +33,7 @@
 
   <div class="page-row">
     <div class="margin">
-      <nav>
+      <nav aria-label="Site navigation">
         <a class="nav-item" href="/writing/" data-text="Writing">Writing</a>
         <a class="nav-item" href="/talking/" data-text="Talking">Talking</a>
         <a class="nav-item" href="/teaching/" data-text="Teaching">Teaching</a>
@@ -42,15 +43,15 @@
     <div class="text-block" id="content">
 
       <div class="bio-section active" data-bio="medium">
-        <p>Nick Seaver is Associate Professor of Anthropology at Tufts University, where he also directs the program in Science, Technology &amp; Society. His research examines the relationship between cultural concepts and technological practices, particularly in computational settings. He is co-editor of <em>Towards an Anthropology of Data</em> (2021) and the author of <em>Computing Taste: Algorithms and the Makers of Music Recommendation</em> (2022), an ethnographic study of music recommender system developers. He is currently writing a book on the meaning and measurement of attention and developing a project on the anthropology of contraptions. <span class="bio-inline-switcher">(<em>90 words; <a data-bio="short" data-text="shorter">shorter</a>, <a data-bio="long" data-text="longer">longer</a></em>)</span></p>
+        <p>Nick Seaver is Associate Professor of Anthropology at Tufts University, where he also directs the program in Science, Technology &amp; Society. His research examines the relationship between cultural concepts and technological practices, particularly in computational settings. He is co-editor of <em>Towards an Anthropology of Data</em> (2021) and the author of <em>Computing Taste: Algorithms and the Makers of Music Recommendation</em> (2022), an ethnographic study of music recommender system developers. He is currently writing a book on the meaning and measurement of attention and developing a project on the anthropology of contraptions. <span class="bio-inline-switcher">(<em>90 words; <button type="button" class="bio-switch" data-bio="short" data-text="shorter">shorter</button>, <button type="button" class="bio-switch" data-bio="long" data-text="longer">longer</button></em>)</span></p>
       </div>
 
       <div class="bio-section" data-bio="short">
-        <p>Nick Seaver is Associate Professor of Anthropology at Tufts University, where he also directs the program in Science, Technology &amp; Society. He is the author of <em>Computing Taste: Algorithms and the Makers of Music Recommendation</em> (2022) and is currently writing a book on the meaning and measurement of attention. <span class="bio-inline-switcher">(<em>49 words; <a data-bio="medium" data-text="longer">longer</a>, <a data-bio="long" data-text="longest">longest</a></em>)</span></p>
+        <p>Nick Seaver is Associate Professor of Anthropology at Tufts University, where he also directs the program in Science, Technology &amp; Society. He is the author of <em>Computing Taste: Algorithms and the Makers of Music Recommendation</em> (2022) and is currently writing a book on the meaning and measurement of attention. <span class="bio-inline-switcher">(<em>49 words; <button type="button" class="bio-switch" data-bio="medium" data-text="longer">longer</button>, <button type="button" class="bio-switch" data-bio="long" data-text="longest">longest</button></em>)</span></p>
       </div>
 
       <div class="bio-section" data-bio="long">
-        <p>Nick Seaver is Associate Professor of Anthropology at Tufts University, where he also directs the program in Science, Technology &amp; Society. He is co-editor of <em>Towards an Anthropology of Data</em> (2021) and the author of <em>Computing Taste: Algorithms and the Makers of Music Recommendation</em> (2022), an ethnographic study of how music recommender system developers think about music, listeners, and listening. Seaver’s work brings anthropological methods and theory to bear on objects like taste, attention, and complexity, arguing that they are at once cultural and technical. He is a faculty affiliate with Harvard’s Berkman Klein Center for Internet &amp; Society and a fellow with the Canadian Institute for Advanced Research’s Future Flourishing Program. Currently, he is writing <em>Attention Fragments</em>, a fragmentary ethnography on the meaning and measurement of attention, under contract with the University of Chicago Press, and developing a new project on the anthropology of contraptions. <span class="bio-inline-switcher">(<em>146 words; <a data-bio="short" data-text="shortest">shortest</a>, <a data-bio="medium" data-text="shorter">shorter</a></em>)</span></p>
+        <p>Nick Seaver is Associate Professor of Anthropology at Tufts University, where he also directs the program in Science, Technology &amp; Society. He is co-editor of <em>Towards an Anthropology of Data</em> (2021) and the author of <em>Computing Taste: Algorithms and the Makers of Music Recommendation</em> (2022), an ethnographic study of how music recommender system developers think about music, listeners, and listening. Seaver’s work brings anthropological methods and theory to bear on objects like taste, attention, and complexity, arguing that they are at once cultural and technical. He is a faculty affiliate with Harvard’s Berkman Klein Center for Internet &amp; Society and a fellow with the Canadian Institute for Advanced Research’s Future Flourishing Program. Currently, he is writing <em>Attention Fragments</em>, a fragmentary ethnography on the meaning and measurement of attention, under contract with the University of Chicago Press, and developing a new project on the anthropology of contraptions. <span class="bio-inline-switcher">(<em>146 words; <button type="button" class="bio-switch" data-bio="short" data-text="shortest">shortest</button>, <button type="button" class="bio-switch" data-bio="medium" data-text="shorter">shorter</button></em>)</span></p>
       </div>
 
       <p class="downloads"><a href="/files/seaver-headshot.jpg" data-text="Headshot">Headshot</a>  <a href="/files/seaver-CV.pdf" data-text="CV">CV</a></p>
@@ -61,9 +62,8 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('a[data-bio]').forEach(function(el) {
-    el.addEventListener('click', function(e) {
-      e.preventDefault();
+  document.querySelectorAll('button[data-bio]').forEach(function(el) {
+    el.addEventListener('click', function() {
       var bio = this.dataset.bio;
       document.querySelectorAll('.bio-section').forEach(function(s) {
         s.classList.toggle('active', s.dataset.bio === bio);

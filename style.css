@@ -234,7 +234,6 @@ body {
   letter-spacing: 0.04em;
   margin-top: var(--line);
   text-align: right;
-  text-align-last: right;
   text-indent: 0;
 }
 
@@ -261,7 +260,6 @@ body {
   letter-spacing: 0.04em;
   line-height: var(--line);
   text-align: left;
-  text-align-last: left;
   margin-top: var(--line);
   margin-bottom: 0;
   text-indent: 0;
@@ -286,7 +284,6 @@ body {
 
 .entry-date {
   text-align: right;
-  text-align-last: right;
   font-family: var(--display);
   font-size: 0.85rem;
   font-weight: 500;
@@ -416,16 +413,22 @@ button.filter-link {
   font-style: normal;
 }
 
-.bio-inline-switcher a {
-  color: var(--text);
+.bio-switch {
+  background: none;
+  border: none;
+  font: inherit;
+  color: inherit;
   cursor: pointer;
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 2px;
   text-decoration-skip-ink: all;
+  padding: 0;
+  text-transform: inherit;
+  letter-spacing: inherit;
 }
 
-.bio-inline-switcher a:hover {
+.bio-switch:hover {
   text-decoration-thickness: 2px;
 }
 
