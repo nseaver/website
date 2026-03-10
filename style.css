@@ -180,12 +180,13 @@ body {
 .margin {
   font-size: 1.15rem;
   line-height: var(--line);
+  align-self: start;
+  position: sticky;
+  top: var(--nav-top);
 }
 
 .margin nav {
   text-align: left;
-  position: sticky;
-  top: var(--nav-top);
 }
 
 .margin .nav-item {
@@ -278,7 +279,7 @@ body {
 
 .text-block .entry-title a:hover {
   text-decoration: underline;
-  text-decoration-thickness: 1.5px;
+  text-decoration-thickness: 2px;
   text-underline-offset: 0.15em;
   text-decoration-skip-ink: all;
 }
