@@ -397,6 +397,26 @@ button.filter-link {
   display: block;
 }
 
+.bio-heading {
+  display: none;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  line-height: var(--line);
+  margin-top: var(--line);
+}
+
+.bio-wordcount {
+  display: none;
+  font-family: var(--display);
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
 .bio-section p {
   text-indent: 0;
 }
