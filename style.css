@@ -413,10 +413,12 @@ button.filter-link {
   font-style: normal;
 }
 
-.bio-switch {
+.bio-inline-switcher .bio-switch {
   background: none;
   border: none;
-  font: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
   color: inherit;
   cursor: pointer;
   text-decoration: underline;
@@ -428,7 +430,7 @@ button.filter-link {
   letter-spacing: inherit;
 }
 
-.bio-switch:hover {
+.bio-inline-switcher .bio-switch:hover {
   text-decoration-thickness: 2px;
 }
 
