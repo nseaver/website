@@ -493,6 +493,7 @@ button.filter-link {
   }
 
   .margin {
+    position: static;
     margin-bottom: 1.5rem;
   }
 
