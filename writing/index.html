@@ -4,6 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Writing — Nick Seaver</title>
+<meta name="description" content="Articles, books, and other writing by Nick Seaver.">
+<meta property="og:title" content="Writing — Nick Seaver">
+<meta property="og:description" content="Articles, books, and other writing by Nick Seaver.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nickseaver.net/writing/">
+<link rel="canonical" href="https://nickseaver.net/writing/">
+<link rel="icon" href="/favicon.png" type="image/png">
 <link rel="preload" href="/fonts/EBGaramond-Roman.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/EBGaramond-Italic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/Barlow-500.woff2" as="font" type="font/woff2" crossorigin>
@@ -11,31 +18,32 @@
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+<a href="#content" class="skip-link">Skip to content</a>
 
 <main class="page">
 
-  <div class="page-header">
+  <header class="page-header">
     <div class="page-header-spacer"></div>
     <div>
       <h1 class="page-title"><a href="/">Nick Sea<span class="kern-av">v</span>er</a></h1>
       <p class="page-subtitle">Anthropologist, Tufts&nbsp;University</p>
     </div>
-  </div>
+  </header>
 
   <div class="page-row">
     <div class="margin">
       <nav>
-        <span class="nav-item active" data-text="Writing">Writing</span>
+        <span class="nav-item active" aria-current="page" data-text="Writing">Writing</span>
         <a class="nav-item" href="/talking/" data-text="Talking">Talking</a>
         <a class="nav-item" href="/teaching/" data-text="Teaching">Teaching</a>
         <a class="nav-vitae" href="/vitae/" data-text="Vitae">Vitae</a>
       </nav>
     </div>
-    <div class="text-block">
+    <div class="text-block" id="content">
       <div class="intro">
         <p>Below, you can find a list of my publications with brief descriptions and links. If you’d like to read anything here and can’t access it, please feel free to <a href="mailto:nick.seaver@tufts.edu">email me</a> and request a copy.</p>
       </div>
-      <p class="filter-bar" id="filterBar"><a class="filter-link active" id="filterAll" onclick="resetFilter()" data-text="All">All</a> <a class="filter-link" onclick="filterBy('algorithms')" data-text="Algorithms">Algorithms</a> <a class="filter-link" onclick="filterBy('anthropology')" data-text="Anthropology">Anthropology</a> <a class="filter-link" onclick="filterBy('attention')" data-text="Attention">Attention</a></p>
+      <p class="filter-bar" id="filterBar"><button type="button" class="filter-link active" id="filterAll" data-text="All">All</button> <button type="button" class="filter-link" data-tag="algorithms" data-text="Algorithms">Algorithms</button> <button type="button" class="filter-link" data-tag="anthropology" data-text="Anthropology">Anthropology</button> <button type="button" class="filter-link" data-tag="attention" data-text="Attention">Attention</button></p>
 
       <div class="entry" data-tags="anthropology">
         <h2 class="entry-title"><a href="https://anthrosource.onlinelibrary.wiley.com/toc/23304847/current">Work and the Data Economy</a></h2>
@@ -246,25 +254,27 @@
 </main>
 
 <script>
-function filterBy(tag) {
-  var entries = document.querySelectorAll('.entry');
-  var links = document.querySelectorAll('.filter-link');
-  entries.forEach(function(el) {
-    var tags = el.getAttribute('data-tags').split(' ');
-    el.classList.toggle('hidden', tags.indexOf(tag) === -1);
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.filter-link').forEach(function(el) {
+    el.addEventListener('click', function() {
+      var tag = this.dataset.tag;
+      var entries = document.querySelectorAll('.entry');
+      var links = document.querySelectorAll('.filter-link');
+      if (tag) {
+        entries.forEach(function(e) {
+          var tags = e.getAttribute('data-tags').split(' ');
+          e.classList.toggle('hidden', tags.indexOf(tag) === -1);
+        });
+        links.forEach(function(l) { l.classList.remove('active'); });
+        this.classList.add('active');
+      } else {
+        entries.forEach(function(e) { e.classList.remove('hidden'); });
+        links.forEach(function(l) { l.classList.remove('active'); });
+        document.getElementById('filterAll').classList.add('active');
+      }
+    });
   });
-  links.forEach(function(el) {
-    el.classList.remove('active');
-    if (el.textContent.toLowerCase() === tag) el.classList.add('active');
-  });
-}
-function resetFilter() {
-  var entries = document.querySelectorAll('.entry');
-  var links = document.querySelectorAll('.filter-link');
-  entries.forEach(function(el) { el.classList.remove('hidden'); });
-  links.forEach(function(el) { el.classList.remove('active'); });
-  document.getElementById('filterAll').classList.add('active');
-}
+});
 </script>
-<script src="/nav.js"></script></body>
+</body>
 </html>

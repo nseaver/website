@@ -17,21 +17,21 @@
   src: url('/fonts/Barlow-500.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 @font-face {
   font-family: 'Barlow';
   src: url('/fonts/Barlow-800.woff2') format('woff2');
   font-weight: 800;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 @font-face {
   font-family: 'Barlow Semi Condensed';
   src: url('/fonts/BarlowSemiCondensed-500i.woff2') format('woff2');
   font-weight: 500;
   font-style: italic;
-  font-display: swap;
+  font-display: block;
 }
 :root {
   --surface: #F0C040;
@@ -183,6 +183,8 @@ body {
 
 .margin nav {
   text-align: left;
+  position: sticky;
+  top: 4.5rem;
 }
 
 .margin .nav-item {
@@ -335,6 +337,14 @@ body {
   font-weight: 800;
 }
 
+button.filter-link {
+  background: none;
+  border: none;
+  font: inherit;
+  padding: 0;
+  line-height: inherit;
+}
+
 /* ---- Year subheadings (Talking) ---- */
 .year-heading {
   font-family: var(--display);
@@ -437,7 +447,32 @@ body {
   font-weight: 800;
 }
 
-/* ---- Responsive: medium ---- */
+/* ---- Skip link ---- */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  font-family: var(--display);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  background: var(--surface);
+  padding: 0.5em 1em;
+  text-decoration: none;
+  z-index: 100;
+}
+.skip-link:focus {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  width: auto;
+  height: auto;
+}
 
 /* ---- Responsive: mobile ---- */
 @media (max-width: 40rem) {

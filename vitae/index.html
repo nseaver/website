@@ -4,6 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Vitae — Nick Seaver</title>
+<meta name="description" content="Bio and CV for Nick Seaver.">
+<meta property="og:title" content="Vitae — Nick Seaver">
+<meta property="og:description" content="Bio and CV for Nick Seaver.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nickseaver.net/vitae/">
+<link rel="canonical" href="https://nickseaver.net/vitae/">
+<link rel="icon" href="/favicon.png" type="image/png">
 <link rel="preload" href="/fonts/EBGaramond-Roman.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/EBGaramond-Italic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/Barlow-500.woff2" as="font" type="font/woff2" crossorigin>
@@ -11,16 +18,17 @@
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+<a href="#content" class="skip-link">Skip to content</a>
 
 <main class="page">
 
-  <div class="page-header">
+  <header class="page-header">
     <div class="page-header-spacer"></div>
     <div>
       <h1 class="page-title"><a href="/">Nick Sea<span class="kern-av">v</span>er</a></h1>
       <p class="page-subtitle">Anthropologist, Tufts&nbsp;University</p>
     </div>
-  </div>
+  </header>
 
   <div class="page-row">
     <div class="margin">
@@ -28,10 +36,10 @@
         <a class="nav-item" href="/writing/" data-text="Writing">Writing</a>
         <a class="nav-item" href="/talking/" data-text="Talking">Talking</a>
         <a class="nav-item" href="/teaching/" data-text="Teaching">Teaching</a>
-        <span class="nav-vitae active" data-text="Vitae">Vitae</span>
+        <span class="nav-vitae active" aria-current="page" data-text="Vitae">Vitae</span>
       </nav>
     </div>
-    <div class="text-block">
+    <div class="text-block" id="content">
 
       <div class="bio-section active" data-bio="medium">
         <p>Nick Seaver is Associate Professor of Anthropology at Tufts University, where he also directs the program in Science, Technology &amp; Society. His research examines the relationship between cultural concepts and technological practices, particularly in computational settings. He is co-editor of <em>Towards an Anthropology of Data</em> (2021) and the author of <em>Computing Taste: Algorithms and the Makers of Music Recommendation</em> (2022), an ethnographic study of music recommender system developers. He is currently writing a book on the meaning and measurement of attention and developing a project on the anthropology of contraptions. <span class="bio-inline-switcher">(<em>90 words; <a data-bio="short">shorter</a>, <a data-bio="long">longer</a></em>)</span></p>
@@ -64,5 +72,5 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
-<script src="/nav.js"></script></body>
+</body>
 </html>
