@@ -43,7 +43,7 @@
   --text-width: 34rem;
   --display: 'Barlow', sans-serif;
   --page-margin: clamp(0rem, calc((100vw - 50rem) / 2), 2.5rem);
-  --header-height: 5.5rem;
+  --nav-top: 19rem;
 }
 
 @view-transition { navigation: auto; }
@@ -172,7 +172,7 @@ body {
 }
 
 .text-block a:hover {
-  text-decoration-thickness: 1.5px;
+  text-decoration-thickness: 2px;
   text-decoration-skip-ink: all;
 }
 
@@ -185,7 +185,7 @@ body {
 .margin nav {
   text-align: left;
   position: sticky;
-  top: calc(var(--page-margin) + 4.5rem + var(--header-height) + 4 * var(--line));
+  top: var(--nav-top);
 }
 
 .margin .nav-item {
