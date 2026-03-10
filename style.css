@@ -183,8 +183,6 @@ body {
 
 .margin nav {
   text-align: left;
-  position: sticky;
-  top: 4.5rem;
 }
 
 .margin .nav-item {
