@@ -341,8 +341,11 @@ button.filter-link {
   background: none;
   border: none;
   font: inherit;
+  text-transform: inherit;
+  letter-spacing: inherit;
   padding: 0;
   line-height: inherit;
+  cursor: pointer;
 }
 
 /* ---- Year subheadings (Talking) ---- */
