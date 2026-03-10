@@ -422,6 +422,7 @@ button.filter-link {
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.04em;
+  white-space: nowrap;
 }
 
 .bio-inline-switcher em {
