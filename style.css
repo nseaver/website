@@ -56,6 +56,8 @@
 
 html {
   scrollbar-gutter: stable;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 html, body {
@@ -567,4 +569,11 @@ button.filter-link {
     margin-right: 0.5em;
   }
 
+}
+
+/* ---- Responsive: short viewports (phone landscape) ---- */
+@media (max-height: 32rem) {
+  :root {
+    --nav-top: 1rem;
+  }
 }
