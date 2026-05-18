@@ -576,4 +576,11 @@ button.filter-link {
   :root {
     --nav-top: 1rem;
   }
+  .page {
+    padding-top: 2rem;
+    padding-bottom: 2.5rem;
+  }
+  .page-header {
+    margin-bottom: calc(1.5 * var(--line));
+  }
 }
