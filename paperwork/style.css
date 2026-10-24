@@ -42,7 +42,7 @@ main.intro { display: grid; gap: 3rem var(--gutter); align-items: start; }
 @media (max-width: 56rem) { .frame img { object-position: center; } }
 @media (max-width: 66rem) {   /* one column: the drawing first, so the first screen shows a drawing */
   main.intro .samples { order: -1; }
-  main.intro .samples img { max-height: 42svh; }
+  main.intro .samples img { max-height: 42svh; max-height: calc(var(--vh0, 1svh) * 42); }
 }
 @media (min-width: 66rem) {
   main.intro { grid-template-columns: minmax(0, var(--measure)) minmax(0, 1fr); grid-template-rows: auto 1fr; }
