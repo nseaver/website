@@ -89,7 +89,7 @@ html.in-prev .frame img { transform: translateX(-100vw); }
 .frame a { display: block; height: 100%; }
 .frame img { width: 100%; height: 100%; object-fit: contain; object-position: center bottom; }
 .frame { touch-action: pan-y; }   /* horizontal swipes on the drawing page between plates (script below) */
-.frame img.swiping { transition: none; } .frame img { transition: transform .18s ease-out, opacity .18s ease-out; }
+.frame img.swiping { transition: none; } .frame img { transition: transform .18s ease-out; }
 /* the whole block sits at the foot, pager last: under the frame with a fixed-height info block on
    a phone, at the bottom of the side column (level with the frame's foot) on wide screens, so the
    pager never moves and a long reference grows upward */
