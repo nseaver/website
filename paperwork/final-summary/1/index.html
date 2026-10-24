@@ -48,7 +48,8 @@ f.addEventListener("touchmove",function(e){if(x0==null)return;var mx=e.touches[0
  if(lock!=="x")return;e.preventDefault();moved=true;dx=mx;if((dx>0&&!prev)||(dx<0&&!next))dx/=4;
  im.classList.add("swiping");im.style.transform="translateX("+dx+"px)";},{passive:false});
 function end(){if(lock==="x"){im.classList.remove("swiping");var t=Math.min(90,f.clientWidth*.22),a=dx<-t?next:dx>t?prev:null;
- if(a)go(a,dx<0?"next":"prev");   /* leave at once: the drawing stays where the finger left it, the next slides in */
+ if(a){im.style.transition="transform .16s ease-in";im.style.transform="translateX("+(dx<0?-1:1)*f.clientWidth*1.1+"px)";
+  go(a,dx<0?"next":"prev");}   /* the drawing slides off while the next page loads (the old page paints until the new one is ready) */
  else im.style.transform="";}x0=null;lock=null;}
 f.addEventListener("touchend",end);f.addEventListener("touchcancel",end);
 f.addEventListener("click",function(e){if(moved){e.preventDefault();moved=false;}},true);
