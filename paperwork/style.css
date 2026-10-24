@@ -40,7 +40,11 @@ main.grid a:target:focus-visible { outline: none; }   /* returning to a gallery 
 /* Commission landing: text beside the samples on wide screens */
 main.intro { display: grid; gap: 3rem var(--gutter); align-items: start; }
 @media (max-width: 56rem) { .frame img { object-position: center; } }
-@media (min-width: 56rem) {
+@media (max-width: 66rem) {   /* one column: the drawing first, so the first screen shows a drawing */
+  main.intro .samples { order: -1; }
+  main.intro .samples img { max-height: 42svh; }
+}
+@media (min-width: 66rem) {
   main.intro { grid-template-columns: minmax(0, var(--measure)) minmax(0, 1fr); grid-template-rows: auto 1fr; }
   main.intro .samples { grid-column: 2; grid-row: 1 / span 2; }
   main.intro footer.inline { grid-column: 1; grid-row: 2; margin-top: 0; }
@@ -59,6 +63,7 @@ main.grid a { display: block; width: min(100%, calc(var(--gw) * var(--k))); }
 /* short drawings lift a little off the row's baseline, more the shorter they are; full-page-tall ones stay on it */
 main.grid a { margin-bottom: max(0px, calc((900px - var(--gh)) * var(--k) * 0.12)); }
 main.grid img { width: 100%; height: auto; display: block; }
+main.grid a { scroll-margin-top: var(--gutter); }
 
 /* one plate: the drawing in a fixed frame, scaled to fit; the controls never move */
 .plate-page .masthead { margin-bottom: 1.5rem; }
@@ -66,11 +71,10 @@ main.viewer { display: grid; gap: 1.25rem var(--gutter); grid-template-rows: 54v
 /* on phones the whole plate page fits the small viewport (browser toolbars showing), so a bottom toolbar
    never covers the pager: the page is one screen tall and the drawing's frame takes whatever height the
    masthead, reference and pager leave, however they wrap */
-@media (max-width: 56rem) {
-  body.plate-page { box-sizing: border-box; height: 100svh; display: flex; flex-direction: column;
-                    padding-bottom: calc(var(--gutter) + env(safe-area-inset-bottom)); }
-  body.plate-page main.viewer { flex: 1; min-height: 0; grid-template-rows: minmax(7rem, 1fr) auto; }
-}
+body.plate-page { box-sizing: border-box; height: 100svh; display: flex; flex-direction: column;
+                  padding-bottom: calc(var(--gutter) + env(safe-area-inset-bottom)); }
+body.plate-page main.viewer { flex: 1; min-height: 0; }
+@media (max-width: 56rem) { body.plate-page main.viewer { grid-template-rows: minmax(7rem, 1fr) auto; } }
 @media (max-width: 56rem) and (max-height: 540px) {   /* e.g. an iPhone SE with toolbars showing */
   .plate-page .masthead .sub { display: none; }
   .plate-page .masthead { margin-bottom: .75rem; padding-bottom: .5rem; }
@@ -83,7 +87,7 @@ main.viewer { display: grid; gap: 1.25rem var(--gutter); grid-template-rows: 54v
 html.in-next .frame img { transform: translateX(100vw); }
 html.in-prev .frame img { transform: translateX(-100vw); }
 @media (min-width: 56rem) {
-  main.viewer { grid-template-columns: minmax(0, 1fr) 22rem; grid-template-rows: max(20rem, calc(100vh - 14rem)); }
+  main.viewer { grid-template-columns: minmax(0, 1fr) 22rem; grid-template-rows: minmax(16rem, 1fr); }
 }
 .frame { margin: 0; min-height: 0; height: 100%; }
 .frame a { display: block; height: 100%; }
