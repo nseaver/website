@@ -64,11 +64,24 @@ main.grid img { width: 100%; height: auto; display: block; }
 .plate-page .masthead { margin-bottom: 1.5rem; }
 main.viewer { display: grid; gap: 1.25rem var(--gutter); grid-template-rows: 54vh auto; }
 /* on phones the whole plate page fits the small viewport (browser toolbars showing), so a bottom toolbar
-   never covers the pager: frame = viewport minus the measured height of everything else (~21.5rem) */
+   never covers the pager: the page is one screen tall and the drawing's frame takes whatever height the
+   masthead, reference and pager leave, however they wrap */
 @media (max-width: 56rem) {
-  main.viewer { grid-template-rows: max(12rem, calc(100svh - 21.5rem - env(safe-area-inset-bottom))) auto; }
-  body.plate-page { padding-bottom: calc(var(--gutter) + env(safe-area-inset-bottom)); }
+  body.plate-page { box-sizing: border-box; height: 100svh; display: flex; flex-direction: column;
+                    padding-bottom: calc(var(--gutter) + env(safe-area-inset-bottom)); }
+  body.plate-page main.viewer { flex: 1; min-height: 0; grid-template-rows: minmax(7rem, 1fr) auto; }
 }
+@media (max-width: 56rem) and (max-height: 540px) {   /* e.g. an iPhone SE with toolbars showing */
+  .plate-page .masthead .sub { display: none; }
+  .plate-page .masthead { margin-bottom: .75rem; padding-bottom: .5rem; }
+  .plate-page .backline { margin: -.5rem 0 .25rem; }
+  .plate-page main.viewer { gap: .75rem; }
+  .plate-page .info { min-height: 0; }
+  .plate-page nav.pager { margin-top: .5rem; padding-top: .5rem; }
+}
+/* a page reached by swiping starts its drawing off-screen on the side it came from, then slides in */
+html.in-next .frame img { transform: translateX(100vw); }
+html.in-prev .frame img { transform: translateX(-100vw); }
 @media (min-width: 56rem) {
   main.viewer { grid-template-columns: minmax(0, 1fr) 22rem; grid-template-rows: max(20rem, calc(100vh - 14rem)); }
 }

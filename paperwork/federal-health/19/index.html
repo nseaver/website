@@ -17,6 +17,7 @@
 <link rel="prefetch" href="../../federal-health/13/">
 <link rel="prefetch" href="../../federal-health/34/">
 <link rel="prefetch" href="../../img/federal-health-34.png">
+<script>try{var s=sessionStorage.getItem("swipe");if(s){sessionStorage.removeItem("swipe");document.documentElement.className+=" in-"+s;}}catch(e){}</script>
 <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
 <link rel="icon" href="../../favicon.png" type="image/png" sizes="64x64">
 <link rel="stylesheet" href="../../style.css">
@@ -34,10 +35,13 @@
 </main>
 <script>(function(){
 var prev=document.querySelector("nav.pager [rel=prev]"),next=document.querySelector("nav.pager [rel=next]");
-function go(a){if(a)location.href=a.href;}
+function go(a,dir){if(!a)return;if(dir){try{sessionStorage.setItem("swipe",dir);}catch(e){}}location.href=a.href;}
 document.addEventListener("keydown",function(ev){if(ev.altKey||ev.ctrlKey||ev.metaKey)return;
  if(ev.key==="ArrowLeft")go(prev);else if(ev.key==="ArrowRight")go(next);});
 var f=document.querySelector(".frame"),im=f&&f.querySelector("img");if(!im)return;
+var H=document.documentElement;if(/ in-(next|prev)/.test(H.className)){var land=function(){im.style.transition="none";
+ requestAnimationFrame(function(){H.className=H.className.replace(/ in-(next|prev)/,"");im.style.transition="transform .28s cubic-bezier(.2,.7,.2,1)";
+ setTimeout(function(){im.style.transition="";},320);});};(im.decode?im.decode().then(land,land):land());}
 var x0,y0,dx=0,lock=null,moved=false;
 f.addEventListener("touchstart",function(e){if(e.touches.length!==1)return;x0=e.touches[0].clientX;y0=e.touches[0].clientY;dx=0;lock=null;moved=false;},{passive:true});
 f.addEventListener("touchmove",function(e){if(x0==null)return;var mx=e.touches[0].clientX-x0,my=e.touches[0].clientY-y0;
@@ -45,7 +49,7 @@ f.addEventListener("touchmove",function(e){if(x0==null)return;var mx=e.touches[0
  if(lock!=="x")return;e.preventDefault();moved=true;dx=mx;if((dx>0&&!prev)||(dx<0&&!next))dx/=4;
  im.classList.add("swiping");im.style.transform="translateX("+dx+"px)";im.style.opacity=1-Math.min(Math.abs(dx)/600,.4);},{passive:false});
 function end(){if(lock==="x"){im.classList.remove("swiping");var t=Math.min(90,f.clientWidth*.22),a=dx<-t?next:dx>t?prev:null;
- if(a){im.style.transform="translateX("+(dx<0?-1:1)*f.clientWidth+"px)";im.style.opacity=0;setTimeout(function(){go(a);},160);}
+ if(a){im.style.transform="translateX("+(dx<0?-1:1)*f.clientWidth+"px)";im.style.opacity=0;setTimeout(function(){go(a,dx<0?"next":"prev");},160);}
  else{im.style.transform="";im.style.opacity="";}}x0=null;lock=null;}
 f.addEventListener("touchend",end);f.addEventListener("touchcancel",end);
 f.addEventListener("click",function(e){if(moved){e.preventDefault();moved=false;}},true);
