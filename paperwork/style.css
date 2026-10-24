@@ -63,12 +63,20 @@ main.grid img { width: 100%; height: auto; display: block; }
 /* one plate: the drawing in a fixed frame, scaled to fit; the controls never move */
 .plate-page .masthead { margin-bottom: 1.5rem; }
 main.viewer { display: grid; gap: 1.25rem var(--gutter); grid-template-rows: 54vh auto; }
+/* on phones the whole plate page fits the small viewport (browser toolbars showing), so a bottom toolbar
+   never covers the pager: frame = viewport minus the measured height of everything else (~21.5rem) */
+@media (max-width: 56rem) {
+  main.viewer { grid-template-rows: max(12rem, calc(100svh - 21.5rem - env(safe-area-inset-bottom))) auto; }
+  body.plate-page { padding-bottom: calc(var(--gutter) + env(safe-area-inset-bottom)); }
+}
 @media (min-width: 56rem) {
   main.viewer { grid-template-columns: minmax(0, 1fr) 22rem; grid-template-rows: max(20rem, calc(100vh - 14rem)); }
 }
 .frame { margin: 0; min-height: 0; height: 100%; }
 .frame a { display: block; height: 100%; }
 .frame img { width: 100%; height: 100%; object-fit: contain; object-position: center bottom; }
+.frame { touch-action: pan-y; }   /* horizontal swipes on the drawing page between plates (script below) */
+.frame img.swiping { transition: none; } .frame img { transition: transform .18s ease-out, opacity .18s ease-out; }
 /* the whole block sits at the foot, pager last: under the frame with a fixed-height info block on
    a phone, at the bottom of the side column (level with the frame's foot) on wide screens, so the
    pager never moves and a long reference grows upward */
