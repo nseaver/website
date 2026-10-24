@@ -18,7 +18,7 @@
 <link rel="prefetch" href="../../small-business-loans/10/">
 <link rel="prefetch" href="../../img/small-business-loans-10.png">
 <link rel="prefetch" href="../../img/small-business-loans-3.png">
-<script>try{var s=sessionStorage.getItem("swipe");if(s){sessionStorage.removeItem("swipe");document.documentElement.className+=" in-"+s;}}catch(e){}</script>
+<script>try{var s=sessionStorage.getItem("swipe");if(s){sessionStorage.removeItem("swipe");if(matchMedia("(pointer: coarse)").matches)document.documentElement.className+=" in-"+s;}}catch(e){}</script>
 <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
 <link rel="icon" href="../../favicon.png" type="image/png" sizes="64x64">
 <link rel="stylesheet" href="../../style.css">
@@ -36,8 +36,9 @@
 </main>
 <script>(function(){
 var prev=document.querySelector("nav.pager [rel=prev]"),next=document.querySelector("nav.pager [rel=next]");
+var touch=matchMedia("(pointer: coarse)").matches;   // slides only on touch screens; desktop page turns just cut
 function go(a,dir){if(!a)return;if(dir){try{sessionStorage.setItem("swipe",dir);}catch(e){}}location.href=a.href;}
-function turn(a,dir){var fr=document.querySelector(".frame img");if(fr&&a){fr.style.transition="transform .16s ease-in";
+function turn(a,dir){if(!touch)return go(a);var fr=document.querySelector(".frame img");if(fr&&a){fr.style.transition="transform .16s ease-in";
  fr.style.transform="translateX("+(dir==="next"?-1:1)*fr.parentNode.clientWidth*1.1+"px)";}go(a,dir);}
 document.addEventListener("keydown",function(ev){if(ev.altKey||ev.ctrlKey||ev.metaKey)return;
  if(ev.key==="ArrowLeft")turn(prev,"prev");else if(ev.key==="ArrowRight")turn(next,"next");});
