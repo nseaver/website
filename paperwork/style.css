@@ -113,7 +113,7 @@ nav.pager [rel=next] { padding-left: 1.5rem; }
 nav.pager [rel=next] { justify-self: end; }
 .ref { max-width: var(--measure); }
 .ref h1 { font: inherit; margin: 0; }
-.ref cite { font-style: italic; display: block; }
+.ref cite { font-style: italic; }
 .ref .date { display: block; }
 .links { margin-top: 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; font-weight: 500; }
 
