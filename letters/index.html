@@ -120,6 +120,8 @@ input[type=file]::file-selector-button {
 #errors { display: none; margin-top: 2rem; padding: 0.75rem 1rem; border-left: var(--rule) solid #B03A2E; background: #fffdf3; }
 #errors p { font-weight: 700; color: #B03A2E; margin-bottom: 0.3rem; }
 #errors ul { margin-left: 1.2em; }
+#offline { display: none; margin-bottom: 2rem; padding: 0.75rem 1rem; border-left: var(--rule) solid #B03A2E; background: #fffdf3; }
+#offline p { font-weight: 700; color: #B03A2E; }
 .hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
 #result {
   display: none; margin-top: 1.5rem; white-space: pre-wrap;
@@ -138,6 +140,7 @@ footer { max-width: var(--measure); border-top: var(--rule) solid var(--ink); pa
       </div>
 
       <form id="f" enctype="multipart/form-data" method="post" action="https://mini.tail419dd1.ts.net/rec/submit" novalidate>
+        <div id="offline" role="alert"><p>The form can't take requests right now. Please email me at nick.seaver@tufts.edu.</p></div>
         <div class="hp" aria-hidden="true">
           <label>Leave this empty <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
         </div>
@@ -232,12 +235,24 @@ footer { max-width: var(--measure); border-top: var(--rule) solid var(--ink); pa
   document.getElementById('started').value = String(Date.now());
   // On nickseaver.net the page is static, so fetch the time token from the service.
   var tok = document.querySelector('input[name=t]');
-  if (!tok.value) {
+  // If the service can't be reached, say so at the top and keep retrying.
+  var offline = document.getElementById('offline');
+  var retry = null;
+  function getToken() {
     fetch('https://mini.tail419dd1.ts.net/rec/token', { cache: 'no-store' })
       .then(function (r) { return r.json(); })
-      .then(function (res) { tok.value = res.t || ''; })
-      .catch(function () {});
+      .then(function (res) {
+        if (!res.t) throw new Error('no token');
+        tok.value = res.t;
+        offline.style.display = 'none';
+        if (retry) { clearInterval(retry); retry = null; }
+      })
+      .catch(function () {
+        offline.style.display = 'block';
+        if (!retry) retry = setInterval(getToken, 30000);
+      });
   }
+  if (!tok.value) getToken();
 
   function renumber() {
     var list = rows.querySelectorAll('.row');
@@ -346,7 +361,8 @@ footer { max-width: var(--measure); border-top: var(--rule) solid var(--ink); pa
       return;
     }
     if (!tok.value) {
-      serverErrors(['Could not reach the server. Please reload the page and try again, or email me at nick.seaver@tufts.edu.']);
+      serverErrors(['Could not reach the server. Please try again, or email me at nick.seaver@tufts.edu.']);
+      getToken();
       return;
     }
     var btn = f.querySelector('.submit');
