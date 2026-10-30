@@ -122,6 +122,8 @@ input[type=file]::file-selector-button {
 #errors ul { margin-left: 1.2em; }
 #offline { display: none; margin-bottom: 2rem; padding: 0.75rem 1rem; border-left: var(--rule) solid #B03A2E; background: #fffdf3; }
 #offline p { font-weight: 700; color: #B03A2E; }
+#restored { display: none; margin-bottom: 2rem; padding: 0.75rem 1rem; border-left: var(--rule) solid var(--ink); background: #fffdf3; }
+#restored p { font-weight: 700; color: var(--ink-dark); }
 .hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
 #result {
   display: none; margin-top: 1.5rem; white-space: pre-wrap;
@@ -140,7 +142,8 @@ footer { max-width: var(--measure); border-top: var(--rule) solid var(--ink); pa
       </div>
 
       <form id="f" enctype="multipart/form-data" method="post" action="https://mini.tail419dd1.ts.net/rec/submit" novalidate>
-        <div id="offline" role="alert"><p>The form can't take requests right now. Please email me at nick.seaver@tufts.edu.</p></div>
+        <div id="offline" role="alert"><p>The form can't take requests right now. Please email me at nick.seaver@tufts.edu. Your answers are saved in this browser, so you can come back and send them later.</p></div>
+        <div id="restored" role="status"><p>Your earlier answers were filled back in. Attach your files again before sending.</p></div>
         <div class="hp" aria-hidden="true">
           <label>Leave this empty <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
         </div>
@@ -276,7 +279,7 @@ footer { max-width: var(--measure); border-top: var(--rule) solid var(--ink); pa
   function addRow() {
     var node = tpl.content.firstElementChild.cloneNode(true);
     node.querySelector('.remove').addEventListener('click', function () {
-      node.remove(); renumber(); checkDates();
+      node.remove(); renumber(); checkDates(); save();
     });
     node.querySelector('input[data-k=due]').addEventListener('change', checkDates);
     rows.appendChild(node);
@@ -285,6 +288,42 @@ footer { max-width: var(--measure); border-top: var(--rule) solid var(--ink); pa
 
   document.getElementById('add').addEventListener('click', addRow);
   addRow();
+
+  // Keep the typed answers (not the files) in this browser until a send succeeds.
+  var DRAFT = 'recletter-draft';
+  var TEXT = ['name', 'email', 'pronouns', 'relationship', 'brag'];
+  function save() {
+    var d = { fields: {}, positions: [] }, any = false;
+    TEXT.forEach(function (id) {
+      var v = document.getElementById(id).value;
+      d.fields[id] = v; if (v) any = true;
+    });
+    rows.querySelectorAll('.row').forEach(function (row) {
+      var r = {};
+      row.querySelectorAll('[data-k]').forEach(function (el) { r[el.dataset.k] = el.value; if (el.value) any = true; });
+      d.positions.push(r);
+    });
+    try {
+      if (any) localStorage.setItem(DRAFT, JSON.stringify(d));
+      else localStorage.removeItem(DRAFT);
+    } catch (err) {}
+  }
+  function restore() {
+    var d;
+    try { d = JSON.parse(localStorage.getItem(DRAFT) || 'null'); } catch (err) { return; }
+    if (!d) return;
+    TEXT.forEach(function (id) { if (d.fields && d.fields[id]) document.getElementById(id).value = d.fields[id]; });
+    (d.positions || []).forEach(function (r, i) {
+      if (i > 0) addRow();
+      var row = rows.querySelectorAll('.row')[i];
+      row.querySelectorAll('[data-k]').forEach(function (el) { if (r[el.dataset.k]) el.value = r[el.dataset.k]; });
+    });
+    checkDates();
+    document.getElementById('restored').style.display = 'block';
+  }
+  restore();
+  document.getElementById('f').addEventListener('input', save);
+  document.getElementById('f').addEventListener('change', save);
 
   function show(msg) {
     var r = document.getElementById('result');
@@ -373,6 +412,7 @@ footer { max-width: var(--measure); border-top: var(--rule) solid var(--ink); pa
       })
       .then(function (res) {
         if (res.ok) {
+          try { localStorage.removeItem(DRAFT); } catch (err) {}
           f.style.display = 'none';
           show('Thanks, your request is in. I\'ll send you a note when the letter goes out; if you haven\'t heard from me close to the deadline, feel free to email me a reminder.');
         } else {
